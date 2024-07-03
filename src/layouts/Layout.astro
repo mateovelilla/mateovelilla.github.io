@@ -1,9 +1,10 @@
 ---
 interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 import '@fontsource-variable/league-spartan';
 import Header from '../components/Header.astro';
 ---
@@ -12,7 +13,7 @@ import Header from '../components/Header.astro';
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
@@ -36,15 +37,21 @@ import Header from '../components/Header.astro';
 </html>
 <style is:global>
 	:root {
-		color-scheme: dark light;
+		color-scheme: light dark;
 	}
 	html {
-		font-family: 'League Spartan Variable', system-ui, sans-serif;
+		font-family: "League Spartan Variable", system-ui, sans-serif;
+		scroll-behavior: smooth;
 	}
 	body {
+		background-color: #050505;
 		display: flex;
 		flex-direction: column;
-		background-color: #050505;
 		height: 100vh;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
 	}
 </style>
