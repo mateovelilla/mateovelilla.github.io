@@ -1,0 +1,59 @@
+---
+import CSSIcon from "../components/Icons/CSS.astro";
+import HTMLIcon from "../components/Icons/HTML.astro";
+import JavascriptIcon from "../components/Icons/Javascript.astro";
+const TECNHOLOGIES = {
+    CSS:{
+        name: "CSS",
+        class: "bg-orange-200 text-black",
+        icon: CSSIcon
+    },
+    HTML:{
+        name: "HTML",
+        class: "bg-orange-200 text-black",
+        icon: HTMLIcon
+    },
+    Javascript: {
+        name: "Javascript",
+        class: "bg-orange-200 text-black",
+        icon: JavascriptIcon
+    },
+    
+}
+const PROJECTS = [
+    {
+        title: "Example title - Build websites events faster",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui tellus, commodo et lectus quis, aliquam gravida lorem. Morbi iaculis, arcu sed interdum imperdiet, magna ex mattis neque, et rutrum libero tortor ac nibh. Mauris et lorem nulla. Ut non tortor sem.",
+        link: "https://flowbite.com/",
+        github: "https://github.com/themesberg/flowbite",
+        image: "/images/projects/project-1.webp",
+        tags: [TECNHOLOGIES.HTML, TECNHOLOGIES.CSS, TECNHOLOGIES.Javascript]
+    }
+];
+---
+
+{
+    PROJECTS.map(({title, description, link, image, tags})=> (
+        <article>
+            <h3 class="text-2xl font-semibold text-orange-200 mb-2">{title}</h3>
+            <p class="text-lg mb-4 text-pretty">{description}</p>
+            <ul class="flex gap-x-2 flex-row">
+                {
+                    tags.map(tag=> (
+                        <li>
+                            <span class={`flex  gap-x-2  rounded-full text-xs ${tag.class} py-1 px-2`}>
+                                <tag.icon class="size-4"/>
+                                {tag.name}
+                            </span>
+                        </li>
+                    ))
+                }
+            </ul>
+            <img
+                src={image}
+                alt={`Screenshot's project ${title}`}
+                class="rounded shadow-2xl shadow-white/10"
+            >
+        </article>
+    ))
+}
