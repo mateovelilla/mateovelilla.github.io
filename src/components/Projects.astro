@@ -2,6 +2,7 @@
 import CSSIcon from "../components/Icons/CSS.astro";
 import HTMLIcon from "../components/Icons/HTML.astro";
 import JavascriptIcon from "../components/Icons/Javascript.astro";
+import Github from "./Icons/Github.astro";
 const TECNHOLOGIES = {
     CSS: {
         name: "CSS",
@@ -29,6 +30,24 @@ const PROJECTS = [
         image: "/images/projects/project-1.webp",
         tags: [TECNHOLOGIES.HTML, TECNHOLOGIES.CSS, TECNHOLOGIES.Javascript],
     },
+    {
+        title: "Example title - Build websites events faster",
+        description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui tellus, commodo et lectus quis, aliquam gravida lorem. Morbi iaculis, arcu sed interdum imperdiet, magna ex mattis neque, et rutrum libero tortor ac nibh. Mauris et lorem nulla. Ut non tortor sem.",
+        link: "https://flowbite.com/",
+        github: "https://github.com/themesberg/flowbite",
+        image: "/images/projects/project-1.webp",
+        tags: [TECNHOLOGIES.HTML, TECNHOLOGIES.CSS, TECNHOLOGIES.Javascript],
+    },
+    {
+        title: "Example title - Build websites events faster",
+        description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui tellus, commodo et lectus quis, aliquam gravida lorem. Morbi iaculis, arcu sed interdum imperdiet, magna ex mattis neque, et rutrum libero tortor ac nibh. Mauris et lorem nulla. Ut non tortor sem.",
+        link: "https://flowbite.com/",
+        github: "https://github.com/themesberg/flowbite",
+        image: "/images/projects/project-1.webp",
+        tags: [TECNHOLOGIES.HTML, TECNHOLOGIES.CSS, TECNHOLOGIES.Javascript],
+    },
 ];
 ---
 
@@ -39,19 +58,21 @@ const PROJECTS = [
                 <h3 class="text-2xl font-semibold text-orange-200 mb-2">
                     {title}
                 </h3>
-                <div class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+                <div class="flex flex-col space-x-0 group md:flex-row md:space-x-8 md:space-y-0">
                     <div class="w-full md:w-1/2">
-                        <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-                            <a href="https://x.com/"      target="_blank"
-            rel="noopener noreferrer">
-
-                            <img
-                                alt="Recién llegado vs 5 años en Nueva Zelanda"
-                                class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-                                loading="lazy"
-                                src={image}
-                            />
-            </a>
+                        <div class="relative flex flex-col  col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+                            <a
+                                href="https://x.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    alt="Recién llegado vs 5 años en Nueva Zelanda"
+                                    class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                                    loading="lazy"
+                                    src={image}
+                                />
+                            </a>
                         </div>
                         <div class="flex flex-wrap mt-3">
                             <ul class="flex gap-x-2 flex-row pb-4">
@@ -78,9 +99,31 @@ const PROJECTS = [
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 md:max-w-lg">
-                        <div class="mt-2 text-gray-700 dark:text-gray-400">
-                            {description}
-                        </div>
+                        <div class="text-white">{description}</div>
+                        <a
+                            href={link}
+                            class="
+                                rounded-lg
+                                bg-white/10
+                                px-4
+                                py-2
+                                border
+                                border-white/10
+                                text-base
+                                flex
+                                flex-
+                                hover:bg-orange-200
+                                hover:text-black
+                                gap-x-3
+                                w-24
+                                items-center
+                            "
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Github class="size-4"></Github>
+                            {" Code"}
+                        </a>
                     </div>
                 </div>
             </article>
