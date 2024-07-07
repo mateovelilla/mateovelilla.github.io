@@ -58,3 +58,6 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 - [ibelick](https://bg.ibelick.com/): Collection of modern background snippets
 
 ### Based on MiduDev portfolio -> https://porfolio.dev/
+
+## TODO
+- [] backdrop-blur bg-white/20 but in dark mode
