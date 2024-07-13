@@ -7,7 +7,7 @@ import Container from "../components/Container.astro";
     title="Portfolio's Mateo Velilla"
     description="Portfolio and blog of Mateo Velilla"
 >
-    <main class="px-4">
+    <main class="px-4 min-h-screen pb-24">
         <Container class="pt-32 pb-12">
             <h2
                 class="font-bold mb-6 border-b-4 border-orange-300 dark:border-white/50 w-60"
@@ -123,6 +123,8 @@ import Container from "../components/Container.astro";
         </Container>
     </main>
 </Layout>
+<script is:inline src="/scripts/refresh-styles.js"></script>
 <script is:inline>
-    refreshTheme()
+	console.log("Refreshing theme in the blog page")
+	refreshTheme();
 </script>
