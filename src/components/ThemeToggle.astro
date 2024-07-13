@@ -60,8 +60,6 @@ const THEMES = ["Light", "Dark", "System"]
 <script is:inline>
   let remove = null
   const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-  const themesMenu = document.getElementById("themes-menu")
-
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined") {
       return localStorage.getItem("theme") ?? "system"
@@ -95,21 +93,29 @@ const THEMES = ["Light", "Dark", "System"]
     updateIcon(themePreference)
     document.documentElement.classList[isDark ? "add" : "remove"]("dark")
   }
-
-  updateTheme()
-
-  document.addEventListener("click", () => themesMenu.classList.remove("open"))
-
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation()
-    const isClosed = !themesMenu.classList.contains("open")
-    themesMenu.classList[isClosed ? "add" : "remove"]("open")
-  })
-
-  document.querySelectorAll(".themes-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
-      updateTheme()
-    })
-  })
+	updateTheme();
+	document.querySelectorAll(".themes-menu").forEach((element) => {
+		console.log(element);
+		document.addEventListener("click", () =>
+			element.classList.remove("open"),
+		);
+	});
+	document.querySelectorAll(".theme-toggle-btn").forEach((element) => {
+		element.addEventListener("click", (e) => {
+			e.stopPropagation();
+			document.querySelectorAll(".themes-menu").forEach((themesMenu) => {
+				const isClosed = !themesMenu.classList.contains("open");
+				themesMenu.classList[isClosed ? "add" : "remove"]("open");
+			});
+		});
+	});
+	document.querySelectorAll(".themes-menu-option").forEach((element) => {
+		element.addEventListener("click", (e) => {
+			localStorage.setItem(
+				"theme",
+				e.target.innerText.toLowerCase().trim(),
+			);
+			updateTheme();
+		});
+	});
 </script>

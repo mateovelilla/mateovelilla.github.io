@@ -1,0 +1,50 @@
+---
+import Container from "./Container.astro";
+import Badge from "./Badge.astro";
+import SocialMedia from "./SocialMedia.astro";
+import LinkedinIcon from './Icons/Linkedin.astro';
+import GithubIcon from "./Icons/Github.astro";
+import MailIcon from "./Icons/Mail.astro";
+---
+<Container class="pt-32 pb-12">
+    <div class="w-full flex pb-4 items-center justify-start gap-x-2">
+        <img
+            src="data:image/jpeg;base64,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"
+            alt="logo"
+            class="rounded-full size-24 mb-4"
+        />
+        <h1
+            class="dar:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-col text-left gap-x-2 pb-6 lg:pb-10"
+        >
+            Hi, I'm Mateo Velilla
+            <Badge>Working at Propelus</Badge>
+        </h1>
+    </div>
+    <h2
+        class="dark:text-white text-xl lg:text-2xl text-wrap max-w-[700px] opacity-90"
+    >
+        <span class="font-bold">+8 years of experience.</span>
+        <span class="text-orange-400 font-bold dark:text-orange-200"
+            >Full Stack Developer.</span
+        > From Colombia 🇨🇴. I'm focus to create <span
+            class="text-orange-400 dark:text-orange-200"
+            >low-latency, distributed, and fault-tolerant systems.</span
+        >
+    </h2>
+    <nav class="flex gap-2 mt-4 flex-wrap text-white">
+        <SocialMedia
+            href="https://www.linkedin.com/in/mateo-velilla-ospina/"
+        >
+            <LinkedinIcon class="size-4 md:size-6" />
+            Linkedin
+        </SocialMedia>
+        <SocialMedia href="https://github.com/mateovelilla">
+            <GithubIcon class="size-4 md:size-6" />
+            Github
+        </SocialMedia>
+        <SocialMedia href="mailto:teovelilla@gmail.com">
+            <MailIcon class="size-4 md:size-6" />
+            teovelilla@gmail.com
+        </SocialMedia>
+    </nav>
+</Container>
