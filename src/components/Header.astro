@@ -1,36 +1,36 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro"
+import ThemeToggle from "./ThemeToggle.astro";
 const navItems = [
-    {
-        title: "Home",
-        label: "home",
-        url: "/#top"
-    },
-    {
-        title: "Experience",
-        label: "experience",
-        url: "/#experience"
-    },
-    {
-        title: "Projects",
-        label: "projects",
-        url: "/#projects"
-    },
-    {
-        title: "Blog",
-        label: "blog",
-        url: "/blog"
-    },
-    {
-        title: "Contact",
-        label: "contact",
-        url: "mailto:teovelilla@gmail.com"
-    }
-]
+  {
+    title: "Home",
+    label: "home",
+    url: "/#top",
+  },
+  {
+    title: "Experience",
+    label: "experience",
+    url: "/#experience",
+  },
+  {
+    title: "Projects",
+    label: "projects",
+    url: "/#projects",
+  },
+  {
+    title: "Blog",
+    label: "blog",
+    url: "/blog",
+  },
+  {
+    title: "Contact",
+    label: "contact",
+    url: "mailto:teovelilla@gmail.com",
+  },
+];
 ---
+
 <header
-    class="
-        fixed
+  class="fixed
         top-0
         z-10
         flex
@@ -39,11 +39,10 @@ const navItems = [
         w-full
         mx-auto
         mt-2
-        p-4
-    ">
-    <nav 
-        class="
-            flex
+        p-4"
+>
+  <nav
+    class="flex
             text-sm
             font-medium
             rounded-full
@@ -51,13 +50,12 @@ const navItems = [
             dark:text-white
             justify-center
             items-center
-            dark:bg-transparent
-        "
-    >
-        {
-            navItems.map((link) => (
-                <a
-                    class="
+            dark:bg-transparent"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          class="
                     relative
                     block
                     px-3
@@ -67,67 +65,66 @@ const navItems = [
                     hover:dark:text-orange-300
                     dark:text-white
                     "
-                    aria-label={link.label}
-                    href={link.url}
-                >
-                    {link.title}
-                </a>
-            ))
-        }
-        <ThemeToggle />
-    </nav>
+          aria-label={link.label}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
+    <ThemeToggle />
+  </nav>
 </header>
 <script>
-    document.addEventListener("astro:page-load", () => {
-      const sections = document.querySelectorAll("section")
-      const navItems = document.querySelectorAll("header nav a")
-  
-      const callback = (entries: any[]) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            navItems.forEach((item) => {
-              if (item.getAttribute("aria-label") == entry.target.id) {
-                item.classList.add("text-orange-300")
-              } else {
-                item.classList.remove("text-orange-300")
-              }
-            })
-          }
-        })
-      }
-  
-      const observer = new IntersectionObserver(callback, {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.3,
-      })
-  
-      sections.forEach((section) => {
-        observer.observe(section)
-      })
-  
-      // Cleanup function
-      document.onvisibilitychange = () => {
-        if (document.visibilityState === "hidden") {
-          observer.disconnect()
-        } else {
-          sections.forEach((section) => {
-            observer.observe(section)
-          })
-        }
-      }
-    })
-  </script>
-<style>
-    nav {
-      animation: nav-shadown 1s linear both;
-      animation-timeline: scroll();
-      animation-range: 0 100px;
-    }
-    @keyframes nav-shadown {
-      to {
-        @apply shadow-lg ring-1 backdrop-blur bg-white/50 ring-white;
-      }
-    }
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
 
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-orange-300");
+            } else {
+              item.classList.remove("text-orange-300");
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect();
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      }
+    };
+  });
+</script>
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur bg-white/50 ring-white;
+    }
+  }
 </style>

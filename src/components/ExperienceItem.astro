@@ -6,12 +6,11 @@ interface Props {
     link?: string;
 }
 const { date, title, description, link } = Astro.props;
-import RightArrow from './Icons/RightArrow.astro';
+import RightArrow from "./Icons/RightArrow.astro";
 ---
 
 <div
-    class="
-        absolute
+    class="absolute
         w-3
         h-3
         bg-orange-400
@@ -22,17 +21,20 @@ import RightArrow from './Icons/RightArrow.astro';
         border-white
         dark:border-orange-300
         dark:bg-orange-300"
-        
 >
 </div>
 <time
     class="mb-1 text-sm font-normal leading-none text-[#00091d]/40 dark:text-gray-500"
     >{date}</time
 >
-<h3 class="text-lg font-bold dark:font-semibold text-orange-400 dark:text-orange-200 mt-4">
+<h3
+    class="text-lg font-bold dark:font-semibold text-orange-400 dark:text-orange-200 mt-4"
+>
     {title}
 </h3>
-<p class="mb-4 text-base font-normal text-[#00091d] dark:text-gray-200 text-balance">
+<p
+    class="mb-4 text-base font-normal text-[#00091d] dark:text-gray-200 text-balance"
+>
     {description}
 </p>
 {
@@ -56,8 +58,7 @@ import RightArrow from './Icons/RightArrow.astro';
             target="_blank"
             rel="noopener noreferrer"
         >
-            Learn more{" "}
-            <RightArrow/>
+            Learn more <RightArrow />
         </a>
     )
 }

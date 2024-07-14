@@ -2,10 +2,11 @@
 import Container from "./Container.astro";
 import Badge from "./Badge.astro";
 import SocialMedia from "./SocialMedia.astro";
-import LinkedinIcon from './Icons/Linkedin.astro';
+import LinkedinIcon from "./Icons/Linkedin.astro";
 import GithubIcon from "./Icons/Github.astro";
 import MailIcon from "./Icons/Mail.astro";
 ---
+
 <Container class="pt-32 pb-12">
     <div class="w-full flex pb-4 items-center justify-start gap-x-2">
         <img
@@ -32,9 +33,7 @@ import MailIcon from "./Icons/Mail.astro";
         >
     </h2>
     <nav class="flex gap-2 mt-4 flex-wrap text-white">
-        <SocialMedia
-            href="https://www.linkedin.com/in/mateo-velilla-ospina/"
-        >
+        <SocialMedia href="https://www.linkedin.com/in/mateo-velilla-ospina/">
             <LinkedinIcon class="size-4 md:size-6" />
             Linkedin
         </SocialMedia>
