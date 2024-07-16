@@ -26,6 +26,7 @@ All commands are run from the root of the project, from a terminal:
 - https://flowbite.com/
 - https://shots.so/
 - https://squoosh.app/
+- https://pigment.shapefactory.co/
 ---
 ## CONCEPTS
 - https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient
