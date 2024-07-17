@@ -2,36 +2,7 @@
 import ExperienceItem from "./ExperienceItem.astro";
 import BriefCaseIcon from "./Icons/BriefCase.astro";
 import Container from "./Container.astro";
-const EXPERIENCE = [
-    {
-        date: "Oct 2022 - Current",
-        title: "Backend advanced - Propelus",
-        description:
-            "Contributor in custom notifications or platform clients, involving continuous deployment tools and continuous integration in Javascript tecnologies",
-        link: "https://propelus.com/",
-    },
-    {
-        date: "Jan 2019 - Sep 2022",
-        title: "Full Stack web Developer - Boston Project LLC",
-        description:
-            "Main contributor in the creation of a platform for tracking vehicle through mobile devices based in AWS technologies and Javascript",
-        link: "https://bostonprojectllc.com/",
-    },
-    {
-        date: "Jul 2016 - Jan 2019",
-        title: "Full Stack Web Developer - Rastreo Siglo XXI S.A.S",
-        description:
-            "I developed an information system for the translation of hexadecimal messages for the location of vehicles through satellite devices with technologies such as NodeJS Postgres and VueJS",
-        link: "https://www.rastreosigloxxi.com.co/",
-    },
-    {
-        date: "Apri 2014 - Jul 2016",
-        title: "Full Stack Web Developer - Smart Solutions",
-        description:
-            "I worked as a Web Developer where I developed functionalities for the use of applications on SmartTv with technologies such as Angular and Yii Framework, and also I improved some Pymes management features",
-        link: "https://sssas.com.co/",
-    },
-];
+const { work } = Astro.props;
 ---
 
 <Container id="experience">
@@ -45,11 +16,34 @@ const EXPERIENCE = [
         class="relative border-s-2 dark:border-s border-[#00091d] dark:border-white ml-3"
     >
         {
-            EXPERIENCE.map((exp) => (
-                <li class="mb-10 ms-4">
-                    <ExperienceItem {...exp} />
-                </li>
-            ))
+            work.map(
+                ({
+                    name,
+                    position,
+                    url,
+                    startDate,
+                    endDate,
+                    summary,
+                }: {
+                    name: string;
+                    position: string;
+                    url: string;
+                    startDate: string;
+                    endDate: string;
+                    summary: string;
+                }) => (
+                    <li class="mb-10 ms-4">
+                        <ExperienceItem
+                            name={name}
+                            position={position}
+                            url={url}
+                            startDate={startDate}
+                            endDate={endDate}
+                            summary={summary}
+                        />
+                    </li>
+                ),
+            )
         }
     </ol>
 </Container>

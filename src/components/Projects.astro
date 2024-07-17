@@ -5,7 +5,15 @@ import JavascriptIcon from "../components/Icons/Javascript.astro";
 import Github from "./Icons/Github.astro";
 import Container from "./Container.astro";
 import FileCodeIcon from "./Icons/FileCode.astro";
-const TECNHOLOGIES = {
+const { projects } = Astro.props;
+type TECH = {
+    [key: string]: {
+        name: string;
+        class: string;
+        icon: object;
+    }
+} 
+const TECNHOLOGIES: TECH  = {
     CSS: {
         name: "CSS",
         class: "",
@@ -22,35 +30,9 @@ const TECNHOLOGIES = {
         icon: JavascriptIcon,
     },
 };
-const PROJECTS = [
-    {
-        title: "Example title - Build websites events faster",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui tellus, commodo et lectus quis, aliquam gravida lorem. Morbi iaculis, arcu sed interdum imperdiet, magna ex mattis neque, et rutrum libero tortor ac nibh. Mauris et lorem nulla. Ut non tortor sem.",
-        link: "https://flowbite.com/",
-        github: "https://github.com/themesberg/flowbite",
-        image: "/images/projects/project-1.webp",
-        tags: [TECNHOLOGIES.HTML, TECNHOLOGIES.CSS, TECNHOLOGIES.Javascript],
-    },
-    {
-        title: "Example title - Build websites events faster",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui tellus, commodo et lectus quis, aliquam gravida lorem. Morbi iaculis, arcu sed interdum imperdiet, magna ex mattis neque, et rutrum libero tortor ac nibh. Mauris et lorem nulla. Ut non tortor sem.",
-        link: "https://flowbite.com/",
-        github: "https://github.com/themesberg/flowbite",
-        image: "/images/projects/project-1.webp",
-        tags: [TECNHOLOGIES.HTML, TECNHOLOGIES.CSS, TECNHOLOGIES.Javascript],
-    },
-    {
-        title: "Example title - Build websites events faster",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui tellus, commodo et lectus quis, aliquam gravida lorem. Morbi iaculis, arcu sed interdum imperdiet, magna ex mattis neque, et rutrum libero tortor ac nibh. Mauris et lorem nulla. Ut non tortor sem.",
-        link: "https://flowbite.com/",
-        github: "https://github.com/themesberg/flowbite",
-        image: "/images/projects/project-1.webp",
-        tags: [TECNHOLOGIES.HTML, TECNHOLOGIES.CSS, TECNHOLOGIES.Javascript],
-    },
-];
+type Prettify<T> = {
+    [K in keyof T]: T[K];
+} & {};
 ---
 
 <Container id="projects">
@@ -62,33 +44,56 @@ const PROJECTS = [
     </h2>
     <div class="flex flex-col gap-y-16">
         {
-            PROJECTS.map(({ title, description, link, image, tags }) => (
-                <article>
-                    <h3 class="text-2xl font-semibold text-orange-400 dark:text-orange-200 mb-2">
-                        {title}
-                    </h3>
-                    <div class="flex flex-col space-x-0 group md:flex-row md:space-x-8 md:space-y-0">
-                        <div class="w-full md:w-1/2">
-                            <div class="relative flex flex-col  col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-                                <a
-                                    href="https://x.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <img
-                                        alt="Recién llegado vs 5 años en Nueva Zelanda"
-                                        class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-                                        loading="lazy"
-                                        src={image}
-                                    />
-                                </a>
-                            </div>
-                            <div class="flex flex-wrap mt-3">
-                                <ul class="flex gap-x-2 flex-row pb-4">
-                                    {tags.map((tag) => (
-                                        <li>
-                                            <span
-                                                class={`
+            projects.map(
+                ({
+                    name,
+                    description,
+                    github,
+                    url,
+                    image,
+                    technologies,
+                }: {
+                    name: string;
+                    description: string;
+                    github: string;
+                    url: string;
+                    image: string;
+                    technologies: string[];
+                }) => (
+                    <article>
+                        <h3 class="text-2xl font-semibold text-orange-400 dark:text-orange-200 mb-2">
+                            {name}
+                        </h3>
+                        <div class="flex flex-col space-x-0 group md:flex-row md:space-x-8 md:space-y-0">
+                            <div class="w-full md:w-1/2">
+                                <div class="relative flex flex-col  col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+                                    <a
+                                        href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <img
+                                            alt="Recién llegado vs 5 años en Nueva Zelanda"
+                                            class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                                            loading="lazy"
+                                            src={image}
+                                        />
+                                    </a>
+                                </div>
+                                <div class="flex flex-wrap mt-3">
+                                    <ul class="flex gap-x-2 flex-row pb-4">
+                                        {technologies.map((tech) => {
+                                            type Tag = Prettify<
+                                                | (typeof TECNHOLOGIES)["CSS"]
+                                                | (typeof TECNHOLOGIES)["HTML"]
+                                                | (typeof TECNHOLOGIES)["Javascript"]
+                                            >;
+                                            const tag: Tag = TECNHOLOGIES[tech];
+                                            const Icon = tag.icon 
+                                            return (
+                                                <li>
+                                                    <span
+                                                        class={`
                                         flex
                                         gap-x-2
                                         rounded-full
@@ -98,20 +103,21 @@ const PROJECTS = [
                                         px-2
                                         bg-white/10
                                     `}
-                                            >
-                                                <tag.icon class="size-4" />
-                                                {tag.name}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
+                                                    >
+                                                        <Icon class="size-4" />
+                                                        {tag.name}
+                                                    </span>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="w-full md:w-1/2 md:max-w-lg">
-                            <div class="dark:text-white">{description}</div>
-                            <a
-                                href={link}
-                                class="
+                            <div class="w-full md:w-1/2 md:max-w-lg">
+                                <div class="dark:text-white">{description}</div>
+                                <a
+                                    href={github}
+                                    class="
                                 rounded-lg
                                 px-4
                                 py-2
@@ -128,16 +134,17 @@ const PROJECTS = [
                                 w-24
                                 items-center
                             "
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Github class="size-4" />
-                                {" Code"}
-                            </a>
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <Github class="size-4" />
+                                    {" Code"}
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </article>
-            ))
+                    </article>
+                ),
+            )
         }
     </div>
 </Container>

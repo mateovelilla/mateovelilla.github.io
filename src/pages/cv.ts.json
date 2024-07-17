@@ -1,6 +1,0 @@
-import cvJson from '@/../cv.json'
-export async function GET(){
-    return new Response(
-        JSON.stringify(cvJson)
-    )
-}

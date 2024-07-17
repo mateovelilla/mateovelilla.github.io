@@ -1,11 +1,17 @@
 ---
 interface Props {
-    date: string;
-    title: string;
-    description: string;
-    link?: string;
+    // date: string;
+    // title: string;
+    // description: string;
+    // link?: string;
+    name: string;
+    position: string;
+    url: string;
+    startDate: string;
+    endDate: string;
+    summary: string;
 }
-const { date, title, description, link } = Astro.props;
+const { name, position, url, startDate, endDate, summary } = Astro.props;
 import RightArrow from "./Icons/RightArrow.astro";
 ---
 
@@ -25,22 +31,22 @@ import RightArrow from "./Icons/RightArrow.astro";
 </div>
 <time
     class="mb-1 text-sm font-normal leading-none text-[#00091d]/40 dark:text-gray-500"
-    >{date}</time
+    >{`${startDate} - ${endDate}`}</time
 >
 <h3
     class="text-lg font-bold dark:font-semibold text-orange-400 dark:text-orange-200 mt-4"
 >
-    {title}
+    {`${position} - ${name}`}
 </h3>
 <p
     class="mb-4 text-base font-normal text-[#00091d] dark:text-gray-200 text-balance"
 >
-    {description}
+    {summary}
 </p>
 {
-    link && (
+    url && (
         <a
-            href={link}
+            href={url}
             class="
                 inline-flex
                 items-center
