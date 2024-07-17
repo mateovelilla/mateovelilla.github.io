@@ -1,0 +1,51 @@
+---
+import Section from "./Section.astro";
+import { basics } from "@/../cv.json";
+import Mail from "@/components/Icons/MailMinimalist.astro";
+import Phone from "@/components/Icons/Phone.astro";
+const { name, label, image, location, profiles, phone, email } = basics;
+const { city, region } = location;
+---
+
+<Section>
+    <div class="container">
+        <div class="info">
+            <h1>{name}</h1>
+            <h2>{label}</h2>
+            <span>
+                icono
+                {city},{region}
+            </span>
+            <footer>
+                {
+                    email && (
+                        <a
+                            href={email}
+                            title="Send email"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Mail />
+                        </a>
+                    )
+                }
+                {
+                    phone && (
+                        <a
+                            href={`tel:${phone}`}
+                            title="Call"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Phone />
+                        </a>
+                    )
+                }
+            </footer>
+        </div>
+        <figure>
+            <img src={image} alt={name} />
+        </figure>
+    </div>
+</Section>
+<style></style>
