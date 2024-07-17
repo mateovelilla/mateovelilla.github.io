@@ -10,7 +10,7 @@ type TECH = {
     [key: string]: {
         name: string;
         class: string;
-        icon: object;
+        icon: typeof CSSIcon | typeof HTMLIcon | typeof JavascriptIcon;
     }
 } 
 const TECNHOLOGIES: TECH  = {
