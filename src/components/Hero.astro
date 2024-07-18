@@ -6,7 +6,7 @@ import LinkedinIcon from "./Icons/Linkedin.astro";
 import GithubIcon from "./Icons/Github.astro";
 import MailIcon from "./Icons/Mail.astro";
 import XIcon from "./Icons/X.astro";
-const { summary, profiles, name, status, image } = Astro.props;
+const { label , profiles, name, status, image } = Astro.props;
 ---
 
 <Container class="pt-32 pb-12">
@@ -27,7 +27,7 @@ const { summary, profiles, name, status, image } = Astro.props;
         class="dark:text-white text-xl lg:text-2xl text-wrap max-w-[700px] opacity-90"
     >
         {
-            summary.map((text: string, i: number) => {
+            label.map((text: string, i: number) => {
                 return i % 2 === 0 ? (
                     <span class="font-bold">{text}</span>
                 ) : (
