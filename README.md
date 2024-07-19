@@ -27,6 +27,7 @@ All commands are run from the root of the project, from a terminal:
 - https://shots.so/
 - https://squoosh.app/
 - https://pigment.shapefactory.co/
+- https://lucia-auth.com/
 ---
 ## CONCEPTS
 - https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient
