@@ -9,13 +9,7 @@ import World from "../Icons/World.astro";
 import { basics } from "@/../cv.json";
 const { name, label, image, location, profiles, phone, email } = basics;
 const { city, region } = location;
-
-const SOCIAL_ICONS: Record<string, any> = {
-    Github,
-    Linkedin,
-    X,
-    Gmail,
-};
+const linkedinProfile = profiles.find(profile=> profile.network === 'Linkedin')
 ---
 
 <Section>
@@ -29,30 +23,31 @@ const SOCIAL_ICONS: Record<string, any> = {
             </span>
             <footer class="social-media">
                 {
-                    phone && (
-                        <a
-                            href={`tel:${phone}`}
-                            title="Call to phone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <PhoneIcon />
+                    email && (
+                        <a href={`mailto:${email}`}>
+                            <Gmail />
+                            {email}
+                            &bull;
                         </a>
                     )
                 }
                 {
-                    profiles.map(({ network, url, username }) => {
-                        const Icon = SOCIAL_ICONS[network];
-                        return (
-                            <a
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Icon height="16" width="16" />
-                            </a>
-                        );
-                    })
+                    phone && (
+                        <a href={`tel:${phone}`}>
+                            <PhoneIcon />
+                            {phone}
+                            &bull;
+                        </a>
+                    )
+                }
+                {
+                    linkedinProfile &&  (
+                        <a href={`${linkedinProfile.url}`}>
+                            <Linkedin width="16" height="16" />
+                            {linkedinProfile.username}
+                            &bull;
+                        </a>
+                    )
                 }
             </footer>
         </div>
@@ -99,25 +94,19 @@ const SOCIAL_ICONS: Record<string, any> = {
         font-size: 0.85rem;
         letter-spacing: -0.05;
     }
-    footer {
+    .social-media {
         display: flex;
-        gap: 4px;
-        margin-top: 8px;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+        justify-content: left;
     }
-    footer a {
-        color: #777;
-        display: inline-flex;
+    .social-media a {
+        display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid #eee;
-        padding: 4px;
-        height: 32px;
-        width: 32px;
-        border-radius: 6px;
-        transition: all 0.3s ease;
-    }
-    footer a:hover {
-        background: #eee;
-        border: 1px solid #ddd;
+        color: #777;
+        gap: 4px;
+        margin: 0;
     }
 </style>

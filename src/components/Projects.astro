@@ -11,9 +11,9 @@ type TECH = {
         name: string;
         class: string;
         icon: typeof CSSIcon | typeof HTMLIcon | typeof JavascriptIcon;
-    }
-} 
-const TECNHOLOGIES: TECH  = {
+    };
+};
+const TECNHOLOGIES: TECH = {
     CSS: {
         name: "CSS",
         class: "",
@@ -73,7 +73,7 @@ type Prettify<T> = {
                                         rel="noopener noreferrer"
                                     >
                                         <img
-                                            alt="Recién llegado vs 5 años en Nueva Zelanda"
+                                            alt=""
                                             class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
                                             loading="lazy"
                                             src={image}
@@ -89,7 +89,7 @@ type Prettify<T> = {
                                                 | (typeof TECNHOLOGIES)["Javascript"]
                                             >;
                                             const tag: Tag = TECNHOLOGIES[tech];
-                                            const Icon = tag.icon 
+                                            const Icon = tag.icon;
                                             return (
                                                 <li>
                                                     <span
