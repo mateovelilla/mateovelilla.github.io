@@ -3,5 +3,40 @@ import Section from "./Section.astro";
 import { certificates } from "@/../cv.json";
 ---
 <Section title="Certificates">
-
+    <ul>
+        {
+            certificates.map(({url, description, name, issuer, date})=> {
+                return(
+                    <li>
+                        <article>
+                            <header>
+                                <a href={url}>
+                                    <h3>{name}</h3>
+                                </a>
+                                <p>{description}</p>
+                                <p>Issuer: {issuer}</p>
+                                <p>Date: {date}</p>
+                            </header>
+                        </article>
+                    </li>
+                )
+            })
+        }
+    </ul>
 </Section>
+<style>
+    ul {
+        display: grid;
+        grid-column: repeat(auto-fit, minmax(200, 1fr));
+        gap: 1rem;
+    }
+    article {
+        border-radius: 8px;
+        border: 1px solid #f2f2f2;
+        gap:16px;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        height: 100%;
+    }
+</style>

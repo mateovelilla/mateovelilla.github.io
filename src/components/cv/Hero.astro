@@ -62,7 +62,6 @@ const linkedinProfile = profiles.find(profile=> profile.network === 'Linkedin')
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        gap: 1rem;
     }
     .info {
         display: flex;
@@ -83,8 +82,9 @@ const linkedinProfile = profiles.find(profile=> profile.network === 'Linkedin')
     img {
         aspect-ratio: 1 / 1;
         object-fit: cover;
-        width: 290px;
+        width: 400px;
         border-radius: 16px;
+        filter:grayscale(90%);
     }
     span {
         display: flex;

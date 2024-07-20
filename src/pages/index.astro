@@ -1,23 +1,60 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import HeroPrintable from "../components/cv/Hero.astro";
+import AboutPrintable from "../components/cv/About.astro";
 import Experience from "../components/Experience.astro";
+import ExperiencePrintable from "../components/cv/Experience.astro";
 import Projects from "../components/Projects.astro";
+import ProjectPrintable from "../components/cv/Projects.astro";
 import Certificates from "@/components/Certificates.astro";
+import CertificatesPrintable from "../components/cv/Certificates.astro";
+import SkillsPrintable from "../components/cv/Skills.astro";
 import { basics, work, projects, certificates } from "../../cv.json";
 ---
 
-<Layout
-	title="Portfolio's Mateo Velilla"
-	description="Portfolio and blog of Mateo Velilla"
->
-	<main class="px-4 min-h-screen pb-24">
-		<Hero label={basics.label} profiles={basics.profiles}  name={basics.name} status={basics.status} image={basics.image}/>
-		<Experience work={work}/>
-		<Projects projects={projects}/>
-		<Certificates certificates={certificates}/>
-	</main>
-</Layout>
+<div class="current-layout">
+	<Layout
+		title="Portfolio's Mateo Velilla"
+		description="Portfolio and blog of Mateo Velilla"
+	>
+		<main class="px-4 min-h-screen pb-24">
+			<Hero
+				label={basics.label}
+				profiles={basics.profiles}
+				name={basics.name}
+				status={basics.status}
+				image={basics.image}
+			/>
+			<Experience work={work} />
+			<Projects projects={projects} />
+			<Certificates certificates={certificates} />
+		</main>
+	</Layout>
+</div>
+<div class="printable">
+	<Layout title="CV" description="Portfolio printable version">
+		<HeroPrintable />
+		<AboutPrintable/>
+		<ExperiencePrintable/>
+		<CertificatesPrintable/>
+		<ProjectPrintable/>
+		<SkillsPrintable/>
+	</Layout>
+</div>
+<style is:global>
+	.printable {
+		display:none;
+	}
+	@media print {
+		.current-layout {
+			display: none;
+		}
+		.printable {
+			display:block;
+		}
+	}
+</style>
 <script is:inline src="/scripts/refresh-styles.js"></script>
 <script is:inline>
 	console.log("Refreshing theme in the index page");
