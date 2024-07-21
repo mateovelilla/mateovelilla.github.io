@@ -43,9 +43,7 @@ const linkedinProfile = profiles.find(profile=> profile.network === 'Linkedin')
                 {
                     linkedinProfile &&  (
                         <a href={`${linkedinProfile.url}`}>
-                            <Linkedin width="16" height="16" />
-                            {linkedinProfile.username}
-                            &bull;
+                            {linkedinProfile.url}
                         </a>
                     )
                 }
