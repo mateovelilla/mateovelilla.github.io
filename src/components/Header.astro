@@ -1,5 +1,11 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import HomeIcon from "./Icons/Home.astro";
+import BriefCaseIcon from "./Icons/BriefCase.astro";
+import FileCodeIcon from "./Icons/FileCode.astro";
+import CertificateIcon from "./Icons/Certificate.astro";
+import ArticleIcon from "./Icons/Article.astro";
+import MailIcon from "./Icons/Mail.astro";
 const navItems = [
   {
     title: "Home",
@@ -35,9 +41,7 @@ const navItems = [
 ---
 
 <header
-  class="
-        header-portfolio
-        fixed
+  class="fixed
         top-0
         z-10
         flex
@@ -60,7 +64,7 @@ const navItems = [
             dark:bg-transparent"
   >
     {
-      navItems.map((link) => (
+      navItems.map(({ label, title, url }) => (
         <a
           class="
                     relative
@@ -72,10 +76,18 @@ const navItems = [
                     hover:dark:text-orange-300
                     dark:text-white
                     "
-          aria-label={link.label}
-          href={link.url}
+          aria-label={label}
+          href={url}
         >
-          {link.title}
+          <p class="hidden md:block">{title}</p>
+          <div class="md:hidden">
+            {label === "home" && <HomeIcon class="size-6" />}
+            {label === "experience" && <BriefCaseIcon class="size-6" />}
+            {label === "projects" && <FileCodeIcon class="size-6" />}
+            {label === "certificates" && <CertificateIcon class="size-6" />}
+            {label === "blog" && <ArticleIcon class="size-6" />}
+            {label === "contact" && <MailIcon class="size-6" />}
+          </div>
         </a>
       ))
     }
