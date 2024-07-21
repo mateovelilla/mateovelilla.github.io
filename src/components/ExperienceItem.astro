@@ -1,9 +1,5 @@
 ---
 interface Props {
-    // date: string;
-    // title: string;
-    // description: string;
-    // link?: string;
     name: string;
     position: string;
     url: string;
@@ -12,7 +8,7 @@ interface Props {
     summary: string;
 }
 const { name, position, url, startDate, endDate, summary } = Astro.props;
-import RightArrow from "./Icons/RightArrow.astro";
+import RightArrowIcon from "./Icons/RightArrow.astro";
 ---
 
 <div
@@ -64,7 +60,7 @@ import RightArrow from "./Icons/RightArrow.astro";
             target="_blank"
             rel="noopener noreferrer"
         >
-            Learn more <RightArrow />
+            Learn more <RightArrowIcon />
         </a>
     )
 }

@@ -1,31 +1,37 @@
 ---
 import Section from "./Section.astro";
 import PhoneIcon from "@/components/Icons/Phone.astro";
-import Linkedin from "../Icons/Linkedin.astro";
-import X from "../Icons/X.astro";
-import Github from "../Icons/Github.astro";
-import Gmail from "../Icons/MailMinimalist.astro";
-import World from "../Icons/World.astro";
-import { basics } from "@/../cv.json";
+import GmailIcon from "@/components/Icons/MailMinimalist.astro";
+import WorldIcon from "@/components/Icons/World.astro";
+import { basics } from "@/cv.json";
 const { name, label, image, location, profiles, phone, email } = basics;
 const { city, region } = location;
-const linkedinProfile = profiles.find(profile=> profile.network === 'Linkedin')
+const linkedinProfile = profiles.find(
+    (profile) => profile.network === "Linkedin",
+);
 ---
 
-<Section>
-    <div class="container">
-        <div class="info">
-            <h1>{name}</h1>
-            <h2>{label}</h2>
-            <span>
-                <World />
+<Section class="pt-8">
+    <div class="flex items-center justify-center">
+        <div class="flex flex-col gap-[0.5rem] pr-[32px]">
+            <h1 class="text-2xl">{name}</h1>
+            <h2 class="text-[#444] font-medium text-base text-balance">
+                {label}
+            </h2>
+            <span
+                class="flex items-center gap-[0.25rem] text-[#666] text-xs tracking-tighter"
+            >
+                <WorldIcon class="text-[#666]" />
                 {city},{region}
             </span>
-            <footer class="social-media">
+            <footer class="flex flex-wrap gap-[6px] items-center justify-left">
                 {
                     email && (
-                        <a href={`mailto:${email}`}>
-                            <Gmail />
+                        <a
+                            class="flex items-center justify-center text-[#666] gap-[4px] m-0"
+                            href={`mailto:${email}`}
+                        >
+                            <GmailIcon />
                             {email}
                             &bull;
                         </a>
@@ -33,7 +39,10 @@ const linkedinProfile = profiles.find(profile=> profile.network === 'Linkedin')
                 }
                 {
                     phone && (
-                        <a href={`tel:${phone}`}>
+                        <a
+                            class="flex items-center justify-center text-[#666] gap-[4px] m-0"
+                            href={`tel:${phone}`}
+                        >
                             <PhoneIcon />
                             {phone}
                             &bull;
@@ -41,8 +50,11 @@ const linkedinProfile = profiles.find(profile=> profile.network === 'Linkedin')
                     )
                 }
                 {
-                    linkedinProfile &&  (
-                        <a href={`${linkedinProfile.url}`}>
+                    linkedinProfile && (
+                        <a
+                            class="flex items-center justify-center text-[#666] gap-[4px] m-0"
+                            href={`${linkedinProfile.url}`}
+                        >
                             {linkedinProfile.url}
                         </a>
                     )
@@ -50,61 +62,11 @@ const linkedinProfile = profiles.find(profile=> profile.network === 'Linkedin')
             </footer>
         </div>
         <figure>
-            <img src={image} alt={name} />
+            <img
+                class="aspect-square object-cover w-[400px] rounded-2xl grayscale"
+                src={image}
+                alt={name}
+            />
         </figure>
     </div>
 </Section>
-<style>
-    .container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .info {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        padding-right: 32px;
-    }
-    h1 {
-        font-size: 2rem;
-    }
-    h2 {
-        color: #444;
-        font-weight: 500;
-        font-size: 1.1rem;
-        text-wrap: balance;
-    }
-
-    img {
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-        width: 400px;
-        border-radius: 16px;
-        filter:grayscale(90%);
-    }
-    span {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        color: #666;
-        font-size: 0.85rem;
-        letter-spacing: -0.05;
-    }
-    .social-media {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        align-items: center;
-        justify-content: left;
-    }
-    .social-media a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #777;
-        gap: 4px;
-        margin: 0;
-    }
-</style>

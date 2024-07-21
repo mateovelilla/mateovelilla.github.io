@@ -1,24 +1,27 @@
 ---
 import Section from "./Section.astro";
-import { work } from "@/../cv.json";
+import { work } from "@/cv.json";
 ---
 
 <Section title="Experience">
-    <ul>
+    <ul class="flex flex-col gap-[32px] pb-6">
         {
             work.map(({ name, startDate, endDate, position, summary }) => {
                 const startYear = new Date(startDate).getFullYear();
-                const endYear = endDate === "Current" ? "current" : new Date(endDate).getFullYear()
-                const year =`${startYear} - ${endYear}`
+                const endYear =
+                    endDate === "Current"
+                        ? "current"
+                        : new Date(endDate).getFullYear();
+                const year = `${startYear} - ${endYear}`;
                 return (
                     <li>
                         <article>
-                            <header>
+                            <header class="flex justify-between items-start mb-[4px]">
                                 <div>
-                                    <h3>{name}</h3>
-                                    <h4>{position}</h4>
+                                    <h3 class="font-medium text-[#222]">{name}</h3>
+                                    <h4 class="font-normal text-[#222]">{position}</h4>
                                 </div>
-                                <time>{year}</time>
+                                <time class="text-[#555] text-xs">{year}</time>
                             </header>
                             <footer>
                                 <p>{summary}</p>
@@ -30,28 +33,3 @@ import { work } from "@/../cv.json";
         }
     </ul>
 </Section>
-<style>
-    ul {
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-    }
-    article h3 {
-        font-weight: 500;
-        color: #111;
-    }
-    article h4 {
-        color: #222;
-        font-weight: 400;
-    }
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 4px;
-    }
-    time {
-        color: #555;
-        font-size: 0.85rem;
-    }
-</style>

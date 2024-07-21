@@ -6,6 +6,8 @@ import FileCodeIcon from "./Icons/FileCode.astro";
 import CertificateIcon from "./Icons/Certificate.astro";
 import ArticleIcon from "./Icons/Article.astro";
 import MailIcon from "./Icons/Mail.astro";
+import { basics } from "@/cv.json";
+const { email } = basics;
 const navItems = [
   {
     title: "Home",
@@ -35,7 +37,7 @@ const navItems = [
   {
     title: "Contact",
     label: "contact",
-    url: "mailto:teovelilla@gmail.com",
+    url: `mailto:${email}`,
   },
 ];
 ---
@@ -54,7 +56,8 @@ const navItems = [
         p-4"
 >
   <nav
-    class="flex
+    class="menu-navbar
+            flex
             text-sm
             font-medium
             rounded-full
@@ -137,7 +140,7 @@ const navItems = [
   });
 </script>
 <style>
-  nav {
+  .menu-navbar {
     animation: nav-shadown 1s linear both;
     animation-timeline: scroll();
     animation-range: 0 100px;

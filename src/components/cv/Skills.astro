@@ -1,31 +1,16 @@
 ---
 import Section from "./Section.astro";
-import { skills } from "@/../cv.json";
+import { skills } from "@/cv.json";
 ---
 
 <Section title="Skills">
-    <ul>
+    <ul class="inline-flex flex-wrap gap-2">
         {
             skills.map(({ name }) => (
                 <li>
-                    <span>{name}</span>
+                    <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500">{name}</span>
                 </li>
             ))
         }
     </ul>
 </Section>
-<style>
-    ul {
-        display: inline-flex;
-        gap: 8px;
-        flex-wrap: wrap;
-    }
-    li {
-        border-radius: 6px;
-        background: #eee;
-        color: black;
-        font-size: .8rem;
-        font-weight: 500;
-        padding: 0.2rem 0.6rem;
-    }
-</style>

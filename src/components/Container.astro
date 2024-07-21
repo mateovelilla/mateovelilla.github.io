@@ -1,6 +1,7 @@
 ---
-const {class: className} = Astro.props;
+const { class: className } = Astro.props;
 ---
+
 <section
     id={Astro.props.id}
     data-section={Astro.props.id}
@@ -12,6 +13,7 @@ const {class: className} = Astro.props;
     lg:max-4xl
     md:max-w-2xl
     ${className}
-    `>
-    <slot/>
+    `
+>
+    <slot />
 </section>
