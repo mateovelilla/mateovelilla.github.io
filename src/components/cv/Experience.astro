@@ -4,7 +4,7 @@ import { work } from "@/cv.json";
 ---
 
 <Section title="Experience">
-    <ul class="flex flex-col gap-[32px] pb-6">
+    <ul class="flex flex-col gap-[32px] pb-2">
         {
             work.map(({ name, startDate, endDate, position, summary }) => {
                 const startYear = new Date(startDate).getFullYear();
