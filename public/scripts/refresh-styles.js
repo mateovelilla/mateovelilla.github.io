@@ -1,3 +1,37 @@
+let remove = null;
+const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+const getThemePreference = () => {
+    if (typeof localStorage !== "undefined") {
+        return localStorage.getItem("theme") ?? "system";
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+};
+const updateIcon = (themePreference) => {
+    const elements = document.querySelectorAll(".theme-toggle-icon");
+    elements.forEach((element => {
+        element.style.scale = element.id === themePreference ? "1" : "0";
+    }))
+};
+const updateTheme = () => {
+    if (remove != null) {
+        remove();
+    }
+    matchMedia.addEventListener("change", updateTheme);
+    remove = () => {
+        matchMedia.removeEventListener("change", updateTheme);
+    };
+
+    const themePreference = getThemePreference();
+    const isDark =
+        themePreference === "dark" ||
+        (themePreference === "system" && matchMedia.matches);
+
+    updateIcon(themePreference);
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+};
 function refreshTheme() {
     updateTheme();
     document.querySelectorAll(".themes-menu").forEach((element) => {

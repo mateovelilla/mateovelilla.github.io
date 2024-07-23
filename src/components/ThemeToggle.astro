@@ -54,8 +54,8 @@ const THEMES = ["Light", "Dark", "System"];
   }
 </style>
 
-<script is:inline>
-  let remove = null;
+<script>
+  let remove: null | Function = null;
   const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined") {
@@ -67,10 +67,11 @@ const THEMES = ["Light", "Dark", "System"];
       : "light";
   };
 
-  const updateIcon = (themePreference) => {
-    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
+  const updateIcon = (themePreference: string) => {
+    const elements = document.querySelectorAll(".theme-toggle-icon") as NodeListOf<HTMLElement>;
+    elements.forEach((element => {
       element.style.scale = element.id === themePreference ? "1" : "0";
-    });
+    }))
   };
 
   const updateTheme = () => {
@@ -101,9 +102,12 @@ const THEMES = ["Light", "Dark", "System"];
       element.classList[isClosed ? "add" : "remove"]("open");
     });
   });
-  document.querySelectorAll(".themes-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
+  const themes_menu_options = document.querySelectorAll(".themes-menu-option") as NodeListOf<HTMLElement>;
+  themes_menu_options.forEach((element) => {
+    const elementCasted = element as Element;
+    elementCasted.addEventListener("click", (e) => {
+      const input = e.target as HTMLElement;
+      localStorage.setItem("theme", input.innerText.toLowerCase().trim());
       updateTheme();
     });
   });
