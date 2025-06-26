@@ -257,7 +257,7 @@
     "interests": [],
     "projects": [
         {
-            "name": "Practical guide to Kubernetesr",
+            "name": "Practical guide to Kubernetes",
             "description": "This repository is a practical collection of Kubernetes concepts and examples, where I explored core topics such as pods, configmaps, secrets, volumes, replicasets, services, deployments, and ingress controllers using NGINX. It also includes a custom CLI built with TypeScript to interact with Kubernetes resources, offering a hands-on approach to learning and experimenting with real-world Kubernetes configurations and best practices.",
             "isActive": true,
             "github": "https://github.com/mateovelilla/practical-guide-to-kubernetes",
