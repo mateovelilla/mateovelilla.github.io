@@ -3,6 +3,8 @@ import CSSIcon from "../components/Icons/CSS.astro";
 import HTMLIcon from "../components/Icons/HTML.astro";
 import JavascriptIcon from "../components/Icons/Javascript.astro";
 import GithubIcon from "./Icons/Github.astro";
+import KubernetesIcon from "./Icons/Kubernetes.astro";
+import TypescriptIcon from "./Icons/Typescript.astro"
 import FileCodeIcon from "./Icons/FileCode.astro";
 import Container from "./Container.astro";
 const { projects } = Astro.props;
@@ -28,6 +30,16 @@ const TECNHOLOGIES: TECH = {
         name: "Javascript",
         class: "",
         icon: JavascriptIcon,
+    },
+    Kubernetes: {
+        name: "Kubernetes",
+        class: "",
+        icon: KubernetesIcon,
+    },
+    Typescript: {
+        name: "Typescript",
+        class: "",
+        icon: TypescriptIcon,
     },
 };
 type Prettify<T> = {

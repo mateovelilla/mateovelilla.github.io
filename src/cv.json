@@ -257,16 +257,15 @@
     "interests": [],
     "projects": [
         {
-            "name": "Example title - Build websites events faster",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui tellus, commodo et lectus quis, aliquam gravida lorem. Morbi iaculis, arcu sed interdum imperdiet, magna ex mattis neque, et rutrum libero tortor ac nibh. Mauris et lorem nulla. Ut non tortor sem.",
+            "name": "Practical guide to Kubernetesr",
+            "description": "This repository is a practical collection of Kubernetes concepts and examples, where I explored core topics such as pods, configmaps, secrets, volumes, replicasets, services, deployments, and ingress controllers using NGINX. It also includes a custom CLI built with TypeScript to interact with Kubernetes resources, offering a hands-on approach to learning and experimenting with real-world Kubernetes configurations and best practices.",
             "isActive": true,
-            "github": "https://github.com",
-            "url": "https://aws.amazon.com",
-            "image": "/images/projects/project-1.webp",
+            "github": "https://github.com/mateovelilla/practical-guide-to-kubernetes",
+            "url": "https://github.com/mateovelilla/practical-guide-to-kubernetes",
+            "image": "/images/projects/practical-guide-to-kubernetes.png",
             "technologies": [
-                "HTML",
-                "CSS",
-                "Javascript"
+                "Kubernetes",
+                "Typescript"
             ]
         }
     ]
